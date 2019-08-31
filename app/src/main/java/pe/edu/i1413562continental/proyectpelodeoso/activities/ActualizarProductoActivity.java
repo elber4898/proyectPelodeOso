@@ -21,7 +21,7 @@ import java.util.Map;
 import pe.edu.i1413562continental.proyectpelodeoso.Constantes;
 import pe.edu.i1413562continental.proyectpelodeoso.R;
 
-public class InsertProductActivity extends AppCompatActivity {
+public class ActualizarProductoActivity extends AppCompatActivity {
 
     private EditText edtid;
     private EditText edtcodigo;
@@ -32,14 +32,20 @@ public class InsertProductActivity extends AppCompatActivity {
     private EditText edtdescripcion;
     private EditText edtidcategoria;
 
-    private Button btnguardar;
+    private Button btnactualizar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_insert_product);
+        setContentView(R.layout.activity_actualizar_producto);
 
-        AndroidNetworking.initialize(getApplicationContext());
+        btnactualizar = findViewById(R.id.btnactualizar);
+         btnactualizar.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                actualizarproducto();
+             }
+         });
 
         edtid=findViewById(R.id.edtid);
         edtcodigo=findViewById(R.id.edtcodigo);
@@ -50,22 +56,10 @@ public class InsertProductActivity extends AppCompatActivity {
         edtdescripcion=findViewById(R.id.edtdescripcion);
         edtidcategoria=findViewById(R.id.edtidcategoria);
 
-
-        btnguardar = findViewById(R.id.btnguardar);
-
-        btnguardar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                guardarProducto();
-            }
-        });
-
-
     }
 
-    private void guardarProducto(){
+    private void actualizarproducto(){
         if(isValidarCampos()){
-
             String idp = edtid.getText().toString();
             String codigo = edtcodigo.getText().toString();
             String nombre = edtnombre.getText().toString();
@@ -85,31 +79,33 @@ public class InsertProductActivity extends AppCompatActivity {
             datos.put("descripcion",descripcion);
             datos.put("idcategoria",idcategoria);
             JSONObject jsonData = new JSONObject(datos);
-
-            AndroidNetworking.post(Constantes.URL_INSERTAR_PRODUCTO)
+            AndroidNetworking.post(Constantes.URL_ACTUALIZAR_PRODUCTO)
                     .addJSONObjectBody(jsonData)
                     .setPriority(Priority.MEDIUM)
                     .build()
                     .getAsJSONObject(new JSONObjectRequestListener() {
                         @Override
                         public void onResponse(JSONObject response) {
+
                             try {
                                 String estado = response.getString("estado");
                                 String error = response.getString("error");
-                                Toast.makeText(InsertProductActivity.this, estado, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ActualizarProductoActivity.this, estado, Toast.LENGTH_SHORT).show();
                                 //Toast.makeText(GuardarProductoActivity.this, "Error: "+error, Toast.LENGTH_SHORT).show();
                             } catch (JSONException e) {
-                                Toast.makeText(InsertProductActivity.this, "Error: "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ActualizarProductoActivity.this, "Error: "+e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
+
                         }
 
                         @Override
                         public void onError(ANError anError) {
-                            Toast.makeText(InsertProductActivity.this, "Error: "+anError.getErrorDetail(), Toast.LENGTH_SHORT).show();
+
+                            Toast.makeText(ActualizarProductoActivity.this, "Error"+anError.getErrorDetail(), Toast.LENGTH_SHORT).show();
                         }
                     });
         }else{
-            Toast.makeText(this, "No se puede insertar un producto si existen campos vacios", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Existen campos vacios no puedes actualizar.", Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -29,7 +29,8 @@
         <activity android:name=".activities.InsertProductActivity" />
         <activity
             android:name=".activities.LoginActivity"
-            android:label="@string/title_activity_login"></activity>
+            android:label="@string/title_activity_login" />
+        <activity android:name=".activities.ActualizarProductoActivity"></activity>
     </application>
 
 </manifest>
