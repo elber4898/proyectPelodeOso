@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Pelo de Oso</string>
+    <string name="title_activity_login">Iniciar Sesion</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Contraseña</string>
+    <string name="action_sign_in">Ingresa o Registro</string>
+    <string name="action_sign_in_short">Registrarse</string>
+    <string name="error_invalid_email">Esta dirección de correo electrónico no es válida.</string>
+    <string name="error_invalid_password">Esta contraseña es muy corta.</string>
+    <string name="error_incorrect_password">Esta contraseña es incorrecta.</string>
+    <string name="error_field_required">este campo es requerido.</string>
+    <string name="permission_rationale">"Se necesitan permisos de contactos para proporcionar compleciones de correo electrónico."
+    </string>
+</resources>
