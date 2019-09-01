@@ -1,4 +1,4 @@
-package pe.edu.i1413562continental.proyectpelodeoso;
+package pe.edu.i1413562continental.proyectpelodeoso.constants;
 
 public class Constantes {
     private final static String URL_WEB_SERVICE = "https://innovaciontextil.herokuapp.com/";

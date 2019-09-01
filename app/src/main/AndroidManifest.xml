@@ -30,7 +30,10 @@
         <activity
             android:name=".activities.LoginActivity"
             android:label="@string/title_activity_login" />
-        <activity android:name=".activities.ActualizarProductoActivity"></activity>
+        <activity android:name=".activities.ActualizarProductoActivity" />
+        <activity android:name=".activities.MenuActivity" />
+        <activity android:name=".activities.EliminarProductoActivity" />
+        <activity android:name=".ListarProductosActivity"></activity>
     </application>
 
 </manifest>

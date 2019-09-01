@@ -18,7 +18,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import pe.edu.i1413562continental.proyectpelodeoso.Constantes;
+import pe.edu.i1413562continental.proyectpelodeoso.constants.Constantes;
 import pe.edu.i1413562continental.proyectpelodeoso.R;
 
 public class ActualizarProductoActivity extends AppCompatActivity {
